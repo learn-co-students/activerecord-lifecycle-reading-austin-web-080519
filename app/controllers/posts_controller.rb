@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+
 	end
 
 	def new
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
 
 	def update
 	  @post = Post.find(params[:id])
-	  @post.update(params.require(:post))
+	  @post.update(title: params[:post][:title], description: params[:post][:description])
 	  redirect_to post_path(@post)
 	end
 
@@ -27,3 +28,5 @@ class PostsController < ApplicationController
 	  @post = Post.find(params[:id])
 	end
 end
+
+
